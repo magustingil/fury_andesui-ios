@@ -77,7 +77,7 @@
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="body" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="HuK-Ws-ZkI">
+                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" editable="NO" text="body" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="HuK-Ws-ZkI">
                             <rect key="frame" x="0.0" y="25.5" width="331" height="110"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <accessibility key="accessibilityConfiguration">

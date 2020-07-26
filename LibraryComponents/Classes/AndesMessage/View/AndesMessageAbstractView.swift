@@ -74,7 +74,6 @@ class AndesMessageAbstractView: UIView, AndesMessageView, UITextViewDelegate {
         self.bodyTextView.setAndesStyle(style: config.bodyStyle)
         self.bodyTextView.attributedText = getBodyText(style: config.bodyStyle)
         self.bodyTextView.delegate = self
-        self.bodyTextView.isScrollEnabled = false
 
         self.iconView.tintColor = config.iconColor
         if let icon = config.icon {

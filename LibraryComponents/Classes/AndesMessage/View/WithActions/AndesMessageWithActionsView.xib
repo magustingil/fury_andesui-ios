@@ -80,7 +80,7 @@
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <textView opaque="NO" multipleTouchEnabled="YES" contentMode="left" editable="NO" text="body" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="d73-Ie-8ZP">
+                        <textView opaque="NO" multipleTouchEnabled="YES" contentMode="left" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" editable="NO" text="body" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="d73-Ie-8ZP">
                             <rect key="frame" x="0.0" y="25.5" width="194" height="42"/>
                             <accessibility key="accessibilityConfiguration">
                                 <accessibilityTraits key="traits" staticText="YES"/>

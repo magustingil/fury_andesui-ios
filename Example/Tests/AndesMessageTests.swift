@@ -41,7 +41,7 @@ class AndesMessageTests: QuickSpec {
                     //Then
                     expect(message.contentView.isKind(of: AndesMessageDefaultView.self)).to(beTrue())
                     expect((message.contentView as! AndesMessageDefaultView).titleLabel.text).to(match(title))
-                    expect((message.contentView as! AndesMessageDefaultView).bodyLabel.text).to(match(body))
+                    expect((message.contentView as! AndesMessageDefaultView).bodyTextView.text).to(match(body))
                     expect((message.contentView as! AndesMessageDefaultView).leftPipeView.backgroundColor) == AndesMessageTypeSuccess().primaryColor
                     expect((message.contentView as! AndesMessageDefaultView).backgroundColor) == AndesMessageHierarchyQuiet(type: AndesMessageTypeSuccess()).backgroundColor
                     }
@@ -93,7 +93,7 @@ class AndesMessageTests: QuickSpec {
                       message.body = descToChange
 
                       //Then
-                      expect((message.contentView as! AndesMessageDefaultView).bodyLabel.text).to(match(descToChange))
+                      expect((message.contentView as! AndesMessageDefaultView).bodyTextView.text).to(match(descToChange))
                   }
                 it("changes andes message view dinamycally to actionsView") {
                     //Given
