@@ -235,4 +235,8 @@ public class AndesBodyLink {
         self.startIndex = startIndex
         self.endIndex = endIndex
     }
+
+    func isValidRange(_ text: NSAttributedString) -> Bool {
+        return (startIndex >= 0 && endIndex >= 0 && startIndex <= endIndex && endIndex <= text.length)
+    }
 }

@@ -120,9 +120,13 @@ class AndesMessageAbstractView: UIView, AndesMessageView, UITextViewDelegate {
 
         if let bodyLinks = config.bodyLinks {
             for (index, link) in bodyLinks.links.enumerated() {
-                let range = NSRange(location: link.startIndex, length: link.endIndex - link.startIndex)
-                attributedString.addAttribute(.link, value: String(describing: index), range: range)
-                attributedString.addAttribute(.underlineStyle, value: NSUnderlineStyle.single.rawValue, range: range)
+                if link.isValidRange(attributedString) {
+                    let range = NSRange(location: link.startIndex, length: link.endIndex - link.startIndex)
+                    attributedString.addAttribute(.link, value: String(describing: index), range: range)
+                    attributedString.addAttribute(.underlineStyle, value: NSUnderlineStyle.single.rawValue, range: range)
+                } else {
+                    print("Body link range incorrect: \(link.startIndex), \(link.endIndex)")
+                }
             }
         }
 

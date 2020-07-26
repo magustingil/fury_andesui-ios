@@ -68,7 +68,11 @@ class MessageViewController: UIViewController, MessageView {
 
         let links = [
             AndesBodyLink(startIndex: 0, endIndex: 5),
-            AndesBodyLink(startIndex: 79, endIndex: 123)
+            AndesBodyLink(startIndex: 79, endIndex: 123),
+            AndesBodyLink(startIndex: 50, endIndex: 40),
+            AndesBodyLink(startIndex: 79, endIndex: 124),
+            AndesBodyLink(startIndex: -1, endIndex: 10),
+            AndesBodyLink(startIndex: -1, endIndex: -10)
         ]
 
         messageView.setBodyLinks(AndesBodyLinks(links: links, listener: {[unowned self] index in self.didPressBodyLink(index)}))
