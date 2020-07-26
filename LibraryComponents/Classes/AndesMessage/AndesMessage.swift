@@ -73,6 +73,8 @@ import UIKit
     // triggered when user presses secondary
     private var onSecondaryActionPressed: ((_ message: AndesMessage) -> Void)?
 
+    public var bodyLinks: AndesBodyLinks?
+
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         setup()
@@ -159,6 +161,11 @@ import UIKit
         reDrawContentViewIfNeededThenUpdate()
     }
 
+    public func setBodyLinks(_ bodyLinks: AndesBodyLinks) {
+        self.bodyLinks = bodyLinks
+        reDrawContentViewIfNeededThenUpdate()
+    }
+
     /// Should return a view depending on which message variant is selected
     private func provideView() -> AndesMessageView {
         let config = AndesMessageViewConfigFactory.provideConfig(for: self)
@@ -207,5 +214,25 @@ public extension AndesMessage {
         get {
             return self.hierarchy.toString()
         }
+    }
+}
+
+public class AndesBodyLinks {
+    var links: [AndesBodyLink]
+    var listener: ((_ index: Int) -> Void)
+
+    public init(links: [AndesBodyLink], listener: @escaping ((_ index: Int) -> Void)) {
+        self.links = links
+        self.listener = listener
+    }
+}
+
+public class AndesBodyLink {
+    var startIndex: Int
+    var endIndex: Int
+
+    public init(startIndex: Int, endIndex: Int) {
+        self.startIndex = startIndex
+        self.endIndex = endIndex
     }
 }
