@@ -216,27 +216,3 @@ public extension AndesMessage {
         }
     }
 }
-
-public class AndesBodyLinks {
-    var links: [AndesBodyLink]
-    var listener: ((_ index: Int) -> Void)
-
-    public init(links: [AndesBodyLink], listener: @escaping ((_ index: Int) -> Void)) {
-        self.links = links
-        self.listener = listener
-    }
-}
-
-public class AndesBodyLink {
-    var startIndex: Int
-    var endIndex: Int
-
-    public init(startIndex: Int, endIndex: Int) {
-        self.startIndex = startIndex
-        self.endIndex = endIndex
-    }
-
-    func isValidRange(_ text: NSAttributedString) -> Bool {
-        return (startIndex >= 0 && endIndex >= 0 && startIndex <= endIndex && endIndex <= text.length)
-    }
-}
