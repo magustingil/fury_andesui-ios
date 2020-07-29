@@ -242,6 +242,31 @@ class AndesMessageTests: QuickSpec {
                     expect(called).toEventually(beTrue())
                 }
             }
+
+            context("AndesMessage Body Links") {
+                it("calls body link handler") {
+                    //Given
+                    let message = AndesMessage(frame: .zero)
+                    var tappedIndex: Int?
+
+                    message.body = "This is body message"
+
+                    let links = [
+                        AndesBodyLink(startIndex: 0, endIndex: 4),
+                        AndesBodyLink(startIndex: 5, endIndex: 10)
+                    ]
+                    let bodyLinks = AndesBodyLinks(links: links, listener: { index in
+                        tappedIndex = index
+                    })
+                    message.setBodyLinks(bodyLinks)
+
+                    //When
+                    _ = (message.contentView as! AndesMessageDefaultView).bodyTextView.delegate?.textView?(UITextView(), shouldInteractWith: URL(string: "1")!, in: NSRange(location: 0, length: 10), interaction: UITextItemInteraction(rawValue: 0)!)
+
+                    //Then
+                    expect(tappedIndex).toEventually(equal(1))
+                }
+            }
         }
     }
 }
