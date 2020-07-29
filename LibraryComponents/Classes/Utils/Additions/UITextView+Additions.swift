@@ -9,7 +9,6 @@ import UIKit
 @objc public extension UITextView {
     func setAndesStyle(style: AndesFontStyle) {
         self.font = style.font
-        self.linkTextAttributes = [NSAttributedString.Key.foregroundColor: style.textColor]
         self.textContainerInset = .zero
         self.textContainer.lineFragmentPadding = 0
         self.isScrollEnabled = false
