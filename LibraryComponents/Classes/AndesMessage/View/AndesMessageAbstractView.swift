@@ -73,7 +73,7 @@ class AndesMessageAbstractView: UIView, AndesMessageView, UITextViewDelegate {
 
         self.bodyTextView.setAndesStyle(style: config.bodyStyle)
         self.bodyTextView.attributedText = getBodyText(style: config.bodyStyle)
-        self.bodyTextView.linkTextAttributes = [NSAttributedString.Key.foregroundColor: getColorByHierarchy()]
+        self.bodyTextView.linkTextAttributes = [NSAttributedString.Key.foregroundColor: config.bodyLinkTextColor]
         self.bodyTextView.delegate = self
 
         self.iconView.tintColor = config.iconColor
@@ -125,8 +125,7 @@ class AndesMessageAbstractView: UIView, AndesMessageView, UITextViewDelegate {
                     let range = NSRange(location: link.startIndex, length: link.endIndex - link.startIndex)
                     attributedString.addAttribute(.link, value: String(describing: index), range: range)
 
-                    //AndesMessageHierarchy is loud should be underline
-                    if config.hierarchy == AndesMessageHierarchy.loud {
+                    if config.bodyLinkIsUnderline {
                         attributedString.addAttribute(.underlineStyle, value: NSUnderlineStyle.single.rawValue, range: range)
                     }
                 }
@@ -134,15 +133,6 @@ class AndesMessageAbstractView: UIView, AndesMessageView, UITextViewDelegate {
         }
 
         return attributedString
-    }
-
-    func getColorByHierarchy() -> UIColor {
-        if config.hierarchy == AndesMessageHierarchy.loud {
-            return config.bodyStyle.textColor
-        } else {
-            #warning("What color should apply here?")
-            return config.pipeColor
-        }
     }
 
     func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
